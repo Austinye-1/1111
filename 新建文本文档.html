@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生日派对邀请函</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Zhi+Mang+Xing&display=swap');
+
+        body {
+            font-family: 'Zhi Mang Xing', cursive;
+            background-color: #f0f8ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+
+        .envelope {
+            position: relative;
+            width: 200px;
+            height: 120px;
+            background: #ff6347;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.5s ease-in-out;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .envelope::before, .envelope::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-style: solid;
+        }
+
+        .envelope::before {
+            bottom: 100%;
+            left: 50%;
+            border-width: 0 100px 60px 100px;
+            border-color: transparent transparent #ff6347 transparent;
+            transform: translateX(-50%);
+        }
+
+        .envelope::after {
+            top: 100%;
+            left: 50%;
+            border-width: 60px 100px 0 100px;
+            border-color: #ff6347 transparent transparent transparent;
+            transform: translateX(-50%);
+        }
+
+        .envelope.open {
+            transform: scale(0);
+        }
+
+        .invitation-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transform: scale(0);
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .invitation-card.show {
+            transform: scale(1);
+        }
+
+        .click-hint {
+            color: white;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ff69b4;
+        }
+
+        p {
+            margin: 10px 0;
+        }
+
+        strong {
+            color: #ff6347;
+        }
+    </style>
+</head>
+<body>
+    <div class="envelope" id="envelope">
+        <div class="click-hint">点击打开</div>
+    </div>
+    <div class="invitation-card" id="invitationCard">
+        <h1>邀请函</h1>
+        <p>亲爱的戴歆芮，</p>
+        <p>您好！</p>
+        <p>在这个特别的日子里，我真诚地邀请您参加我的生日派对。这个派对对我来说意义非凡，因为能与我最珍视的朋友们一起庆祝这一时刻将使这一天变得更加美好。</p>
+        <p><strong>派对时间：</strong>2024年6月22日，下午6点</p>
+        <p><strong>派对地点：</strong>水晶湖别墅641</p>
+        <p>在派对上，我们将有丰富的美食、欢乐的游戏以及精彩的节目表演。我希望您能与我们一同分享这份喜悦和欢笑。</p>
+        <p>请您回复此邀请函，告知是否能参加，以便我们做好相应的准备。</p>
+        <p>期待您的到来！</p>
+        <p>祝您一切顺利，天天开心！</p>
+        <p>此致</p>
+        <p>敬礼</p>
+        <p>[叶子傲]</p>
+    </div>
+    <script>
+        document.getElementById('envelope').addEventListener('click', function() {
+            const envelope = document.getElementById('envelope');
+            const invitationCard = document.getElementById('invitationCard');
+            envelope.classList.add('open');
+            setTimeout(() => {
+                invitationCard.classList.add('show');
+            }, 500);  // 延迟0.5秒后显示邀请函
+        });
+    </script>
+</body>
+</html>
